@@ -1,0 +1,4 @@
+rootProject.name = 'CleverFinal'
+include 'news-api'
+include 'news-core'
+
