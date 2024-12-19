@@ -6,6 +6,7 @@ import by.clevertec.news.core.entity.dto.NewsResponse;
 import by.clevertec.news.core.entity.dto.NewsUpdate;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public interface NewsMapper {
     News toEntity(NewsUpdate newsUpdate);
     NewsResponse toResponse(News news);
     List<NewsResponse> toResponseList(List<News> news);
+
+    void updateEntity(@MappingTarget News news, NewsUpdate newsUpdate);
 
 
 }
