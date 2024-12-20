@@ -1,6 +1,8 @@
 package by.clevertec.news.core.service.impl;
 
+import by.clevertec.news.core.client.CommentsClient;
 import by.clevertec.news.core.entity.News;
+import by.clevertec.news.core.entity.dto.CommentDto;
 import by.clevertec.news.core.entity.dto.NewsCreate;
 import by.clevertec.news.core.entity.dto.NewsResponse;
 import by.clevertec.news.core.entity.dto.NewsUpdate;
@@ -26,6 +28,8 @@ public class NewsServiceImpl implements NewsService {
     private final NewsRepository repository;
     private final NewsMapper mapper;
     private final UtilService utilService;
+
+    private final CommentsClient commentsClient;
 
 
     @Override
@@ -57,6 +61,11 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public NewsWithComments findNewsWithComments(UUID id) {
-        return null;
+
+        News news = repository.findById(id).orElseThrow();
+        NewsWithComments newsWithComments = mapper.toNewsWithComments(news);
+        newsWithComments.setComments(commentsClient.getCommentsByNews(id));
+
+        return newsWithComments;
     }
 }

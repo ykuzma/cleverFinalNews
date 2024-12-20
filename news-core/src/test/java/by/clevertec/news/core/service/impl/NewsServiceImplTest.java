@@ -1,9 +1,12 @@
 package by.clevertec.news.core.service.impl;
 
+import by.clevertec.news.core.client.CommentsClient;
 import by.clevertec.news.core.entity.News;
+import by.clevertec.news.core.entity.dto.CommentDto;
 import by.clevertec.news.core.entity.dto.NewsCreate;
 import by.clevertec.news.core.entity.dto.NewsResponse;
 import by.clevertec.news.core.entity.dto.NewsUpdate;
+import by.clevertec.news.core.entity.dto.NewsWithComments;
 import by.clevertec.news.core.mapper.NewsMapperImpl;
 import by.clevertec.news.core.repository.NewsRepository;
 import by.clevertec.news.core.util.Pagination;
@@ -37,8 +40,11 @@ class NewsServiceImplTest {
     NewsRepository repository;
     @Mock
     UtilService utilService;
+    @Mock
+    CommentsClient commentsClient;
     @Spy
     NewsMapperImpl mapper;
+
     @InjectMocks
     NewsServiceImpl service;
 
@@ -52,7 +58,7 @@ class NewsServiceImplTest {
     void shouldAddNews() {
         //given
         UUID uuid = UUID.randomUUID();
-        NewsCreate newsCreate =  helper.getNewsCreate();
+        NewsCreate newsCreate = helper.getNewsCreate();
         NewsResponse expectedResponse = new NewsResponse(uuid, LocalDateTime.MAX, newsCreate.getTitle(), newsCreate.getText());
 
         News newsBeforeRepository = new News(null, LocalDateTime.MAX, newsCreate.getTitle(), newsCreate.getText());
@@ -117,5 +123,27 @@ class NewsServiceImplTest {
         List<NewsResponse> actualResponse = service.findAll(new Pagination());
         //then
         assertThat(actualResponse).isEqualTo(expectedResponse);
+    }
+
+    @Test
+    void findNewsWithComments() {
+        //given
+        News news = helper.getNews();
+        List<CommentDto> comments = helper.getNewsList(CommentDto.class);
+        NewsWithComments expectedResponse = NewsWithComments.builder()
+                .id(news.getId())
+                .time(news.getTime())
+                .text(news.getText())
+                .title(news.getTitle())
+                .comments(comments)
+                .build();
+        when(repository.findById(news.getId())).thenReturn(Optional.of(news));
+        when(commentsClient.getCommentsByNews(news.getId())).thenReturn(comments);
+        //when
+        NewsWithComments actualResponse = service.findNewsWithComments(news.getId());
+        //then
+
+        assertThat(actualResponse).isEqualTo(expectedResponse);
+
     }
 }
