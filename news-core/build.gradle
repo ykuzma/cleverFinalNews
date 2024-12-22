@@ -16,6 +16,10 @@ repositories {
 
 dependencies {
 
+    implementation 'org.postgresql:postgresql'
+
+    testImplementation 'com.h2database:h2'
+
 
     compileOnly 'org.projectlombok:lombok'
     implementation 'org.mapstruct:mapstruct:1.6.0'
@@ -32,7 +36,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor'org.mapstruct:mapstruct-processor:1.6.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation "org.testcontainers:postgresql"
     testImplementation 'org.jeasy:easy-random-core:5.0.0'
 }
 
