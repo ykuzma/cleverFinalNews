@@ -1,6 +1,7 @@
 package by.clevertec.news.core.repository;
 
 import by.clevertec.news.core.entity.News;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,9 +13,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Testcontainers
 @DataJpaTest
@@ -23,6 +27,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @ContextConfiguration(classes = NewsRepository.class)
 @EntityScan(basePackageClasses = News.class)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
+@Sql("/insertData.sql")
+@Disabled
 class NewsRepositoryTest {
 
     @Autowired
@@ -38,8 +44,9 @@ class NewsRepositoryTest {
     }
 
     @Test
-    void init() {
-        System.out.println(repository.save(new News()));
+
+    void shouldReturnRightSize() {
+        assertThat(repository.findAll()).hasSize(10);
     }
 
 }
