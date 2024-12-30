@@ -21,6 +21,7 @@ public class NewsServiceImpl implements NewsService {
     private final NewsOutputPort adapter;
     private final UtilService utilService;
 
+
     @Override
     public News findById(UUID id) {
         return adapter.findById(id);

@@ -6,6 +6,7 @@ import by.clevertec.news.api.repository.NewsRepository;
 import by.clevertec.news.core.domain.News;
 import by.clevertec.news.core.port.out.NewsOutputPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +37,7 @@ public class NewsSecondaryAdapter implements NewsOutputPort {
         repository.delete(mapper.toEntity(news));
     }
 
+    @Cacheable("news")
     @Override
     public News findById(UUID id) {
         return mapper.toDomain(
