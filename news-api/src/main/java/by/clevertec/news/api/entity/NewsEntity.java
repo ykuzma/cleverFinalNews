@@ -1,4 +1,4 @@
-package by.clevertec.news.core.entity;
+package by.clevertec.news.api.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +28,7 @@ import java.util.UUID;
 @Builder
 @ToString
 @EqualsAndHashCode
-public class News {
+public class NewsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -46,5 +46,4 @@ public class News {
     @NotBlank
     @Size(min = 3)
     private String text;
-
 }

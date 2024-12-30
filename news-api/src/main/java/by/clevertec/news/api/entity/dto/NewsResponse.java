@@ -1,4 +1,4 @@
-package by.clevertec.news.core.entity.dto;
+package by.clevertec.news.api.entity.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,14 +9,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NewsWithComments {
+public class NewsResponse {
     @NotNull
     private UUID id;
     @NotNull
@@ -29,7 +27,4 @@ public class NewsWithComments {
     @NotBlank(message = "Text can not be empty")
     @Size(min = 3)
     private String text;
-
-    private List<CommentDto> comments;
-
 }

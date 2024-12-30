@@ -1,6 +1,6 @@
-package by.clevertec.news.core.repository;
+package by.clevertec.news.api.repository;
 
-import by.clevertec.news.core.entity.News;
+import by.clevertec.news.api.entity.NewsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface NewsRepository extends JpaRepository<News, UUID>, JpaSpecificationExecutor<News> {
+public interface NewsRepository extends JpaRepository<NewsEntity, UUID>, JpaSpecificationExecutor<NewsEntity> {
 }

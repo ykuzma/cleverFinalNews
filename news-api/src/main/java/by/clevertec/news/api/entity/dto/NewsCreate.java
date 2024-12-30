@@ -1,4 +1,4 @@
-package by.clevertec.news.core.entity.dto;
+package by.clevertec.news.api.entity.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NewsUpdate {
+public class NewsCreate {
     @NotBlank(message = "Title can not be empty")
     @Size(min = 3, max = 255)
     private String title;
@@ -19,4 +19,5 @@ public class NewsUpdate {
     @NotBlank(message = "Text can not be empty")
     @Size(min = 3)
     private String text;
+
 }
