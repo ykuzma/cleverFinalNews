@@ -1,0 +1,140 @@
+databaseChangeLog:
+  - changeSet:
+      id: "2"
+      author: Юрий
+      changes:
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa9
+              - column:
+                  name: title
+                  value: Lermontov
+              - column:
+                  name: text
+                  value: Скажи-ка, дядя, ведь не даром.
+              - column:
+                  name: time_create
+                  value: 2020-01-06
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa0
+              - column:
+                  name: title
+                  value: Bulgakov
+              - column:
+                  name: text
+                  value: Аннушка уже разлила масло.
+              - column:
+                  name: time_create
+                  value: 2022-02-02
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa1
+              - column:
+                  name: title
+                  value: Tolkin
+              - column:
+                  name: text
+                  value: Моя прелесть.
+              - column:
+                  name: time_create
+                  value: 2023-03-03
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa2
+              - column:
+                  name: title
+                  value: Rouling
+              - column:
+                  name: text
+                  value: Всегда.
+              - column:
+                  name: time_create
+                  value: 2024-04-04
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa3
+              - column:
+                  name: title
+                  value: Korotkevich
+              - column:
+                  name: text
+                  value: Быу.Ёсць.Буду.
+              - column:
+                  name: time_create
+                  value: 2025-01-01
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa4
+              - column:
+                  name: title
+                  value: Makaenak
+              - column:
+                  name: text
+                  value: Свинячы мамант.
+              - column:
+                  name: time_create
+                  value: 2025-01-02
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa5
+              - column:
+                  name: title
+                  value: King
+              - column:
+                  name: text
+                  value: Король ужасов.
+              - column:
+                  name: time_create
+                  value: 2025-01-03
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa6
+              - column:
+                  name: title
+                  value: Kipling
+              - column:
+                  name: text
+                  value: Мы стобой одной крови.
+              - column:
+                  name: time_create
+                  value: 2025-01-03
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  value: f510bd7d-bf8a-4e7d-b326-95b4df6c1fa7
+              - column:
+                  name: title
+                  value: Turgenev
+              - column:
+                  name: text
+                  value: MMMMMMMMMMMMMMMMMMMMMMMM.
+              - column:
+                  name: time_create
+                  value: 2025-01-04

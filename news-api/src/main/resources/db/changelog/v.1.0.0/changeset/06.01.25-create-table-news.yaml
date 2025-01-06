@@ -1,0 +1,32 @@
+databaseChangeLog:
+- changeSet:
+    id: 1733671274107-9
+    author: Юрий
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: news_pkey
+            name: id
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: title
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: text
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: time_create
+            type: timestamp
+        tableName: news
+
+
