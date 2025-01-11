@@ -1,5 +1,6 @@
 package by.clevertec.news.api.cache;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.AbstractCacheManager;
 
@@ -7,8 +8,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-
+@RequiredArgsConstructor
 public class NewsServiceCacheManager extends AbstractCacheManager {
+
+    private final CustomCacheFactory cacheFactory;
 
     private final List<Cache> caches = Collections.emptyList();
 
@@ -19,6 +22,7 @@ public class NewsServiceCacheManager extends AbstractCacheManager {
 
     @Override
     protected Cache getMissingCache(String name) {
-        return new NewsServiceCache(name);
+        return cacheFactory.getInstance(name);
     }
+
 }
