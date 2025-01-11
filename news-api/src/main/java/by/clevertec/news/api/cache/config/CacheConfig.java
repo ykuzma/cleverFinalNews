@@ -1,8 +1,12 @@
-package by.clevertec.news.api.cache;
+package by.clevertec.news.api.cache.config;
 
+import by.clevertec.news.api.cache.CustomCacheFactory;
+import by.clevertec.news.api.cache.NewsCacheFactory;
+import by.clevertec.news.api.cache.NewsServiceCacheManager;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -18,15 +22,22 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 
 @Configuration
 @EnableCaching
+@EnableConfigurationProperties(NewsServiceCacheProperty.class)
 public class CacheConfig {
 
     @Bean
-    @Profile("prod")
-    public CacheManager getCacheManager() {
-        return new NewsServiceCacheManager();
+    @Profile("dev")
+    public CacheManager getCacheManager(CustomCacheFactory factory) {
+        return new NewsServiceCacheManager(factory);
     }
 
     @Bean
+    public CustomCacheFactory cacheFactory(NewsServiceCacheProperty property){
+        return new NewsCacheFactory(property);
+    }
+
+    @Bean
+    @Profile("prod")
     public CacheManager redisCacheManager() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule())
