@@ -5,9 +5,11 @@ import by.clevertec.news.core.port.out.CommentOutputPort;
 import by.clevertec.news.core.port.out.NewsOutputPort;
 import by.clevertec.news.core.service.CommentUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
+@Component
 @RequiredArgsConstructor
 public class CommentUseCaseImpl implements CommentUseCase {
 

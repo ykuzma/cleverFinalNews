@@ -15,6 +15,5 @@ public interface NewsOutputPort {
 
     List<News> findAll(PageRequest pageRequest);
 
-    boolean isExist(UUID id);
 
 }
