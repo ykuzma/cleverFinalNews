@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -22,6 +24,8 @@ public class News {
     private String title;
 
     private String text;
+
+    private List<Comment> comments = new ArrayList<>();
 
     public News update(News newsUpdate) {
         return News.builder()

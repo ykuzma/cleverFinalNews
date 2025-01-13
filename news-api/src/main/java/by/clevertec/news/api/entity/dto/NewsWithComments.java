@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +31,6 @@ public class NewsWithComments {
     @Size(min = 3)
     private String text;
 
-    private List<CommentDto> comments;
+    private List<CommentResponse> comments = new ArrayList<>();
 
 }
