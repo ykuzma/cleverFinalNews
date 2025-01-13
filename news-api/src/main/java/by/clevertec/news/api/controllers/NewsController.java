@@ -95,7 +95,7 @@ public class NewsController {
         );
     }
 
-    @PutMapping("/{newsId}/comments{commentId}")
+    @PutMapping("/{newsId}/comments/{commentId}")
     @Logging
     public ResponseEntity<CommentResponse> updateComment(@Validated @RequestBody CommentUpdate commentUpdate,
                                                          @PathVariable UUID newsId,
@@ -108,7 +108,7 @@ public class NewsController {
                 HttpStatus.OK);
     }
 
-    @DeleteMapping("/{newsId}/comments{commentId}")
+    @DeleteMapping("/{newsId}/comments/{commentId}")
     @Logging
     public ResponseEntity<Void> deleteComment(@PathVariable UUID newsId,
                                               @PathVariable UUID commentId) {

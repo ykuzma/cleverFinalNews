@@ -6,6 +6,8 @@ import by.clevertec.news.api.repository.NewsRepository;
 import by.clevertec.news.core.domain.News;
 import by.clevertec.news.core.port.out.NewsOutputPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,7 @@ public class NewsSecondaryAdapter implements NewsOutputPort {
     private final NewsMapper mapper;
 
     @Override
+    @CachePut(value = "news", key = "#result.id")
     public News save(News news) {
         NewsEntity newsEntity = repository.save(mapper.toEntity(news));
         return mapper.toDomain(newsEntity);
@@ -33,6 +36,7 @@ public class NewsSecondaryAdapter implements NewsOutputPort {
     }
 
     @Override
+    @CacheEvict(value = "news", key = "#news.id")
     public void delete(News news) {
         repository.delete(mapper.toEntity(news));
     }
