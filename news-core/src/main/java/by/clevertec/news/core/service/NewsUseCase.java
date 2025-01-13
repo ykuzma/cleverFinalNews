@@ -6,9 +6,10 @@ import by.clevertec.news.core.util.Pagination;
 import java.util.List;
 import java.util.UUID;
 
-public interface NewsService {
+public interface NewsUseCase {
 
     News findById(UUID id);
+    News findWithCommentsById(UUID id);
 
     News addNews(News news);
     void delete(UUID id);

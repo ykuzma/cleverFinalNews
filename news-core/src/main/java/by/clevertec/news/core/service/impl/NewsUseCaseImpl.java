@@ -1,8 +1,9 @@
 package by.clevertec.news.core.service.impl;
 
 import by.clevertec.news.core.domain.News;
+import by.clevertec.news.core.port.out.CommentOutputPort;
 import by.clevertec.news.core.port.out.NewsOutputPort;
-import by.clevertec.news.core.service.NewsService;
+import by.clevertec.news.core.service.NewsUseCase;
 import by.clevertec.news.core.util.Pagination;
 import by.clevertec.news.core.util.UtilService;
 import lombok.RequiredArgsConstructor;
@@ -16,15 +17,23 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class NewsServiceImpl implements NewsService {
+public class NewsUseCaseImpl implements NewsUseCase {
 
     private final NewsOutputPort adapter;
+    private final CommentOutputPort commentAdapter;
     private final UtilService utilService;
 
 
     @Override
     public News findById(UUID id) {
         return adapter.findById(id);
+    }
+
+    @Override
+    public News findWithCommentsById(UUID id) {
+        News news = findById(id);
+        news.setComments(commentAdapter.findByNews(id));
+        return news;
     }
 
     @Override
@@ -36,6 +45,7 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public void delete(UUID id) {
         adapter.delete(adapter.findById(id));
+        commentAdapter.deleteCommentByNews(id);
     }
 
     @Override
