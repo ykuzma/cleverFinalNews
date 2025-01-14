@@ -12,7 +12,10 @@ spring:
     enabled: true
   profiles:
     active: prod
-
+  data:
+    redis:
+      host: localhost
+      port: 6379
 
 server:
   servlet:

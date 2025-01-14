@@ -23,6 +23,7 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'by.clevertec:starter-logging-controller:0.0.1'
+    implementation 'by.clevertec:starter-controller-advice:0.0.1'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
 
     implementation 'org.springframework.boot:spring-boot-starter-cache'

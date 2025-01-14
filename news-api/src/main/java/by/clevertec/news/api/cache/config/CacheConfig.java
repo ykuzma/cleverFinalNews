@@ -32,7 +32,6 @@ public class CacheConfig {
     private String redisHost;
 
     @Bean
-    @Profile("dev")
     public CacheManager getCacheManager(CustomCacheFactory factory) {
         return new NewsServiceCacheManager(factory);
     }
