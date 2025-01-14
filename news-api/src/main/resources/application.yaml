@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:40000/clever
     username: postgres
-    password: penelopacristal
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -10,7 +10,8 @@ spring:
     show-sql: true
   liquibase:
     enabled: true
-
+  profiles:
+    active: dev
 server:
   servlet:
     context-path: /clever
