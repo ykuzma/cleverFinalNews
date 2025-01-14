@@ -3,6 +3,7 @@ version: "3.9"
 networks:
   news:
     driver: bridge
+    external: true
 
 services:
   ##1
@@ -16,6 +17,8 @@ services:
       PORT: 8080
       server_port: 8080
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/clever
+      APPLICATION_SERVICE_URL: comments:8081/clever
+      SPRING_DATA_REDIS_HOST: redis
     ports:
       - 8080:8080
     depends_on:
@@ -43,3 +46,4 @@ services:
       - "6379:6379"
     networks:
       - news
+

@@ -11,7 +11,9 @@ spring:
   liquibase:
     enabled: true
   profiles:
-    active: dev
+    active: prod
+
+
 server:
   servlet:
     context-path: /clever

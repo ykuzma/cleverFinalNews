@@ -6,6 +6,7 @@ import by.clevertec.news.api.cache.NewsServiceCacheManager;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -24,6 +25,11 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 @EnableCaching
 @EnableConfigurationProperties(NewsServiceCacheProperty.class)
 public class CacheConfig {
+
+    @Value("${spring.data.redis.port}")
+    private int redisPort;
+    @Value("${spring.data.redis.host}")
+    private String redisHost;
 
     @Bean
     @Profile("dev")
@@ -60,8 +66,8 @@ public class CacheConfig {
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("localhost");
-        redisStandaloneConfiguration.setPort(6379);
+        redisStandaloneConfiguration.setHostName(redisHost);
+        redisStandaloneConfiguration.setPort(redisPort);
 
         return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }
