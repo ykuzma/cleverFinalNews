@@ -2,6 +2,7 @@ databaseChangeLog:
   - changeSet:
       id: "2"
       author: Юрий
+      context: dev
       changes:
         - insert:
             tableName: news

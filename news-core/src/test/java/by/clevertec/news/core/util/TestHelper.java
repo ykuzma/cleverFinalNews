@@ -13,16 +13,5 @@ public class TestHelper {
 
     public <T> List<T> getObjectList(Class<T> clazz) {
         return easyRandom.objects(clazz, 100).toList();}
-   /*
 
-    public NewsCreate getNewsCreate() {
-        return easyRandom.nextObject(NewsCreate.class);
-    }
-
-
-    public NewsUpdate getNewsUpdate() {
-        return easyRandom.nextObject(NewsUpdate.class);
-    }
-
-    }*/
 }
