@@ -1,7 +1,7 @@
 package by.clevertec.news.api.adapter.secondary;
 
 import by.clevertec.news.api.entity.NewsEntity;
-import by.clevertec.news.api.exception.NotFoundDataException;
+import by.clevertec.news.api.entity.exception.NotFoundDataException;
 import by.clevertec.news.api.mapper.NewsMapper;
 import by.clevertec.news.api.repository.NewsRepository;
 import by.clevertec.news.core.domain.News;

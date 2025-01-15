@@ -1,4 +1,4 @@
-package by.clevertec.news.api.exception;
+package by.clevertec.news.api.entity.exception;
 
 import by.clevertec.starter.exception.handle.annotation.ExceptionStatus;
 import org.springframework.http.HttpStatus;
