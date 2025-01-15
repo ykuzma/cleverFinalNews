@@ -5,7 +5,8 @@ RESTful платформа, реализующая функционал для �
  - comments - https://github.com/ykuzma/cleverFinalComments;
 
 Для работы приложения необходимо скачать в локальный репозиторий
-стартер для логирования - https://github.com/ykuzma/loggingStarter.
+стартер для логирования - https://github.com/ykuzma/loggingStarter;
+стартер для обработки ошибок - https://github.com/ykuzma/excaptionHandlerStarter.git;
 
 Запуск приложения из контейнера:
  - docker create network news;
