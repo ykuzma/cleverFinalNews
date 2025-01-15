@@ -43,6 +43,7 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation "org.testcontainers:postgresql"
     testImplementation 'org.jeasy:easy-random-core:5.0.0'
+    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.2.0'
 
 }
 

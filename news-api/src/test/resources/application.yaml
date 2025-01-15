@@ -11,6 +11,10 @@ spring:
   liquibase:
     enabled: true
     contexts: test
+  data:
+    redis:
+      host: localhost
+      port: 6379
 
 server:
   servlet:
@@ -20,7 +24,7 @@ server:
 application:
   service:
     name: comments-service
-    url: http://localhost:8081/clever
+    url: http://localhost:${wiremock.server.port}
   cache:
     strategy: lfu
     limit: 2

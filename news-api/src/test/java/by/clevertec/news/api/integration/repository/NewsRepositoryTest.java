@@ -1,6 +1,7 @@
-package by.clevertec.news.api.repository;
+package by.clevertec.news.api.integration.repository;
 
 import by.clevertec.news.api.entity.NewsEntity;
+import by.clevertec.news.api.repository.NewsRepository;
 import by.clevertec.news.api.util.TestHelper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

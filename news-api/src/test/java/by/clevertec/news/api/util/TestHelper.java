@@ -1,6 +1,11 @@
 package by.clevertec.news.api.util;
 
 import by.clevertec.news.api.entity.NewsEntity;
+import by.clevertec.news.api.entity.dto.CommentResponse;
+import by.clevertec.news.api.entity.dto.CommentSaveForClient;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.jeasy.random.EasyRandom;
 
 import java.time.LocalDateTime;
@@ -11,6 +16,10 @@ import java.util.UUID;
 public class TestHelper {
     private final EasyRandom easyRandom = new EasyRandom();
     private final List<NewsEntity> newsEntities;
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    {
+
+    }
 
     public TestHelper() {
         newsEntities = List.of(
@@ -25,13 +34,24 @@ public class TestHelper {
                 new NewsEntity(UUID.fromString("760045a3-32aa-4393-8dfd-d57dc95c4932"), LocalDateTime.parse("2004-05-05T00:00:00.000000"), "999", "9999999999"),
                 new NewsEntity(UUID.fromString("760045a3-32aa-4393-8dfd-d57dc95c4933"), LocalDateTime.parse("2004-05-05T00:00:00.000000"), "000", "0000000000")
         );
+
+
+        objectMapper.registerModule(new JavaTimeModule());
     }
 
     public <T> List<T> getObjectList(Class<T> clazz, int size) {
         return easyRandom.objects(clazz, size).toList();}
 
+    public <T>T getObject(Class<T> clazz) {
+        return easyRandom.nextObject(clazz);
+    }
+
     public NewsEntity getNewsEntity() {
         return easyRandom.nextObject(NewsEntity.class);}
+
+    public CommentResponse getCommentResponse() {
+        return easyRandom.nextObject(CommentResponse.class);
+    }
 
 
     public List<NewsEntity> getNewsEntities() {
@@ -40,5 +60,9 @@ public class TestHelper {
 
     public List<NewsEntity> getPageableList(int pageNumber, int pageSize){
         return newsEntities.stream().skip((long) pageNumber * pageSize).limit(pageSize).toList();
+    }
+
+    public String getResponseBody(Object object) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(object);
     }
 }
