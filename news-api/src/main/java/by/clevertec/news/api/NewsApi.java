@@ -7,8 +7,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = {"by.clevertec.news.core", "by.clevertec.news.api"})
-@EnableJpaRepositories
-@EntityScan
 @EnableFeignClients
 public class NewsApi {
     public static void main(String[] args) {

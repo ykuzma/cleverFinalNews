@@ -25,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @EnableFeignClients
 @AutoConfigureWireMock(port = 0)
+@ActiveProfiles("integration")
 class CommentsClientTest {
 
     @Autowired

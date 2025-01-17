@@ -2,7 +2,6 @@ package by.clevertec.news.api.util;
 
 import by.clevertec.news.api.entity.NewsEntity;
 import by.clevertec.news.api.entity.dto.CommentResponse;
-import by.clevertec.news.api.entity.dto.CommentSaveForClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -17,9 +16,8 @@ public class TestHelper {
     private final EasyRandom easyRandom = new EasyRandom();
     private final List<NewsEntity> newsEntities;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    {
 
-    }
+
 
     public TestHelper() {
         newsEntities = List.of(
@@ -65,4 +63,5 @@ public class TestHelper {
     public String getResponseBody(Object object) throws JsonProcessingException {
         return objectMapper.writeValueAsString(object);
     }
+
 }

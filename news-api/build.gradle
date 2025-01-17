@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.4.0'
     id 'io.spring.dependency-management' version '1.1.6'
     id 'jacoco'
+    id 'org.asciidoctor.jvm.convert' version '2.4.0'
 }
 
 group 'by.clevertec'
@@ -12,6 +13,10 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenLocal()
     mavenCentral()
+}
+
+ext {
+    set('snippetsDir', file("build/generated-snippets"))
 }
 
 dependencies {
@@ -44,11 +49,12 @@ dependencies {
     testImplementation "org.testcontainers:postgresql"
     testImplementation 'org.jeasy:easy-random-core:5.0.0'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.2.0'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 
 }
 
 test {
-
+    outputs.dir snippetsDir
     finalizedBy jacocoTestReport
     useJUnitPlatform()
 }
@@ -56,4 +62,28 @@ test {
 jacocoTestReport {
     dependsOn test
 
+}
+
+asciidoctor {
+
+    options doctype: 'book'
+    inputs.dir snippetsDir
+    dependsOn test
+    attributes = [
+        'snippets':snippetsDir,
+        'source-highlighter': 'highlightjs',
+        'imagesdir'         : './images',
+        'toc'               : 'left',
+        'toclevels'         : 3,
+        'numbered'          : '',
+        'icons'             : 'font',
+        'setanchors'        : '',
+        'idprefix'          : '',
+        'idseparator'       : '-',
+        'docinfo1'          : '',
+        'safe-mode-unsafe'  : '',
+        'allow-uri-read'    : '',
+        linkattrs           : true,
+        encoding            : 'utf-8'
+    ]
 }
