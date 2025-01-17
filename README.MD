@@ -1,8 +1,13 @@
 RESTful платформа, реализующая функционал для работы с новостями.
 
+**Описание api в файле docApi.html в корне проекта**
+
+
 Приложение состоит из двух микросервисов:
  - news - https://github.com/ykuzma/cleverFinalNews;
  - comments - https://github.com/ykuzma/cleverFinalComments;
+
+
 
 Для работы приложения необходимо скачать в локальный репозиторий
 стартер для логирования - https://github.com/ykuzma/loggingStarter:
@@ -26,3 +31,4 @@ RESTful платформа, реализующая функционал для �
 Кастомный кэш - Property:
  - application.cache.strategy = lfu | lru
  - application.cache.limit = int (размер кэша)
+
