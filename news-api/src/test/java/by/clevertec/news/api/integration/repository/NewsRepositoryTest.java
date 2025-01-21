@@ -7,14 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.jdbc.Sql;
@@ -30,12 +27,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Testcontainers
 @DataJpaTest
-@EnableAutoConfiguration
-@ContextConfiguration(classes = NewsRepository.class)
-@EntityScan(basePackageClasses = NewsEntity.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Sql("/insertData.sql")
 @ActiveProfiles("integration")
+
 class NewsRepositoryTest {
     @Autowired
     NewsRepository repository;
@@ -56,6 +51,7 @@ class NewsRepositoryTest {
         registry.add("spring.datasource.url", postgres::getJdbcUrl);
         registry.add("spring.datasource.username", postgres::getUsername);
         registry.add("spring.datasource.password", postgres::getPassword);
+        registry.add("spring.datasource.driver-class-name", postgres::getDriverClassName);
     }
 
     @Test
