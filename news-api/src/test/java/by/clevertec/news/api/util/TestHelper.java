@@ -2,6 +2,7 @@ package by.clevertec.news.api.util;
 
 import by.clevertec.news.api.entity.NewsEntity;
 import by.clevertec.news.api.entity.dto.CommentResponse;
+import by.clevertec.news.core.domain.News;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -13,6 +14,9 @@ import java.util.UUID;
 
 
 public class TestHelper {
+
+    public static final String NEWS_CACHE = "news";
+    public static final String LRU = "lru";
     private final EasyRandom easyRandom = new EasyRandom();
     private final List<NewsEntity> newsEntities;
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -46,6 +50,9 @@ public class TestHelper {
 
     public NewsEntity getNewsEntity() {
         return easyRandom.nextObject(NewsEntity.class);}
+
+    public News getNews() {
+        return easyRandom.nextObject(News.class);}
 
     public CommentResponse getCommentResponse() {
         return easyRandom.nextObject(CommentResponse.class);

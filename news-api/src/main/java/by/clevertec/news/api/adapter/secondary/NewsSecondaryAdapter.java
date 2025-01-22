@@ -31,6 +31,7 @@ public class NewsSecondaryAdapter implements NewsOutputPort {
     }
 
     @Override
+    @CachePut(value = "news", key = "#result.id")
     public News update(News news) {
         NewsEntity newsEntity = repository.save(mapper.toEntity(news));
         return mapper.toDomain(newsEntity);
