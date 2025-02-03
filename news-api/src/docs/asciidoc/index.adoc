@@ -1,0 +1,56 @@
+= RESTful News API Specification
+
+== Find news by id
+
+A `GET` request is used to find news by id
+
+=== Curl example
+include::{snippets}/newsController/getNewsById/curl-request.adoc[]
+
+=== Request
+include::{snippets}/newsController/getNewsById/http-request.adoc[]
+
+=== Response
+include::{snippets}/newsController/getNewsById/http-response.adoc[]
+
+=== PathParameters
+include::{snippets}/newsController/getNewsById/path-parameters.adoc[]
+
+=== ResponseFields
+include::{snippets}/newsController/getNewsById/response-fields.adoc[]
+
+== Find news
+
+A `GET` request is used to find all news
+
+=== Curl example
+include::{snippets}/newsController/getAllNews/curl-request.adoc[]
+
+=== Request
+include::{snippets}/newsController/getAllNews/http-request.adoc[]
+
+=== Response
+include::{snippets}/newsController/getAllNews/http-response.adoc[]
+
+=== ResponseFields
+include::{snippets}/newsController/getAllNews/response-fields.adoc[]
+
+== Post News
+
+A `POST` request is used to post news
+
+=== Curl example
+include::{snippets}/newsController/postNews/curl-request.adoc[]
+
+=== Request
+include::{snippets}/newsController/postNews/http-request.adoc[]
+
+=== Request Body
+include::{snippets}/newsController/postNews/request-body.adoc[]
+
+=== Response
+include::{snippets}/newsController/postNews/http-response.adoc[]
+
+=== ResponseFields
+include::{snippets}/newsController/postNews/response-fields.adoc[]
+

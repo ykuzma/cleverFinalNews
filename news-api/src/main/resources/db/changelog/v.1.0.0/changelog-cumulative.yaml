@@ -1,0 +1,5 @@
+databaseChangeLog: #параметр в котором находятся миграции
+  - include: # список активных миграций
+      file: db/changelog/v.1.0.0/changeset/06.01.25-create-table-news.yaml # путь к файлу миграции
+  - include:
+      file: db/changelog/v.1.0.0/changeset/06.01.25-insert-data-in-news.yaml

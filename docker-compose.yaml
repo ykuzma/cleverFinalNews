@@ -1,0 +1,49 @@
+version: "3.9"
+
+networks:
+  news:
+    driver: bridge
+    external: true
+
+services:
+  ##1
+  news:
+    container_name: news_api
+    image: news_api
+    build:
+      context: ./news-api
+      dockerfile: Dockerfile
+    environment:
+      PORT: 8080
+      server_port: 8080
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/clever
+      APPLICATION_SERVICE_URL: comments:8081/clever
+      SPRING_DATA_REDIS_HOST: redis
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - news
+
+  postgres:
+    container_name: postgres
+    image: postgres:13.3
+    ports:
+      - "40000:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: clever
+    networks:
+      - news
+
+  redis:
+    container_name: redis
+    image: 'redis'
+    ports:
+      - "6379:6379"
+    networks:
+      - news
+

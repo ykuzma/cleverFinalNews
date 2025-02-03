@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:40000/clever
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  liquibase:
+    enabled: true
+  profiles:
+    active: prod
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  servlet:
+    context-path: /clever
+  port: 8080
+
+application:
+  service:
+    name: comments-service
+    url: http://localhost:8081/clever
+  cache:
+    strategy: lfu
+    limit: 2
+logging:
+  level:
+    org.springframework.security: debug
+  controller:
+    enable: true

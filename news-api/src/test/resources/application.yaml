@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  liquibase:
+    enabled: true
+    contexts: test
+application:
+  cache:
+    strategy: lfu
+    limit: 2
+server:
+  servlet:
+    context-path: /clever
+  port: 8080
+logging:
+  level:
+    org.springframework.security: debug
+  controller:
+    enable: true
+exception:
+  handle:
+    enable: true

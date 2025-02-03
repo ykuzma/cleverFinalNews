@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/clever
+    username: postgres
+    password: penelopacristal
+    driver-class-name: org.postgresql.Driver
+exception:
+  handle:
+    enable: true
